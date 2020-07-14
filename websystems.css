@@ -1,0 +1,108 @@
+body {
+    min-width: 1200px;
+    padding-left:10%;
+    padding-right:10%;
+    font-family: arial;
+    background-color:dimgray;
+}
+header {
+    margin:0;
+    background-color: darkcyan;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    padding:70px;
+    }
+.menu {
+    margin:0;
+    padding-top:10px;
+    padding-left:0;
+    list-style-type: none;
+    width:20%;
+    min-height:530px;
+    background-color:darkslategrey;
+    text-align: left;
+    float: right;
+    line-height:50px;
+}
+#comment {
+    margin:0;
+    padding-top:10px;
+    padding-left:0;
+    list-style-type: none;
+    width:20%;
+    min-height:2090px;
+    background-color:darkslategrey;
+    text-align: left;
+    float: right;
+    line-height:50px;
+}
+a{
+    margin:20px;
+    text-decoration: none;
+    font-size: 20px;
+}
+a:visited {color:white} 
+a:hover {
+    color:crimson;
+    background-color:aliceblue;
+}
+.p {
+    margin:0;
+    background-color:white;
+    width:80%;
+    min-height: 540px;
+    max-height:1020px;
+    float:left;
+    text-align: left;
+}
+#c {
+    margin:0;
+    background-color:white;
+    width:80%;
+    min-height:2100px;
+    float:left;
+    text-align: left;
+}
+.content {
+    padding-top:15px;
+    padding-left:15px;
+    padding-right:15px;
+    line-height:30px;
+}
+h1 {
+    padding:15px;
+}
+span {
+    color:orange;
+}
+footer {
+    text-align: left;
+    background-color:darkcyan;
+    color:white;
+    padding: 30px;
+    padding-top:520px;
+    padding-bottom:40px;
+}
+table {
+    width:50%;
+    text-align: left;
+    line-height: 25px;
+}
+#pic1 {
+    float:right;
+    margin-top:20px;
+    margin-right:20px;
+    width:282px;
+    height:300px;
+}
+#pic2 {
+    float:right;
+    width:198px;
+    height:540px;
+}
+#pic3 {
+    float:left;
+    width:198px;
+    height:540px;
+}
