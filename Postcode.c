@@ -3,14 +3,15 @@
 #include <string.h>
 
 #include "Postcode.h"
+#include <ad.c>
 
 struct postcode {
     Ad *ads;
     int p;
-}; 
+};
 
 
-// new postcode 
+// new postcode
 Postcode PostcodeNew() {
 
     return NULL;
@@ -41,4 +42,3 @@ void PostcodeFree(Postcode p) {
 
     return;
 }
-

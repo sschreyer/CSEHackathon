@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 #include "Postcode.h"
-#include "Ad.h"
+#include "ad.h"
 #include "Tree.h"
 
 typedef struct node *Node;
@@ -73,7 +73,7 @@ static Node doInsert(Node n, Ad a, int p) {
         n->left = doInsert(n->left, a, p);
     } else if (cmp > 0) {
         n->right = doInsert(n->right, a, p);
-    } else { 
+    } else {
         addAdToPostcode();
         return n;
     }
@@ -160,5 +160,3 @@ int TreeFind (BSTree t, int postcode)
 {
 	//
 }
-
-

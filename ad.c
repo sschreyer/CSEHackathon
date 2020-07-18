@@ -8,7 +8,7 @@ struct ad {
     char *ad;
     char *businessName;
     int postcode;
-}; 
+};
 
 // Creates a new ad — INCOMPLETE
 Ad AdNew(char *ad, int postcode) {
