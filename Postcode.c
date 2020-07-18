@@ -3,7 +3,8 @@
 #include <string.h>
 
 #include "Postcode.h"
-#include "ad.c"
+#include "ad.h"
+#include "Tree.h"
 
 struct postcode {
     Ad firstAd;
@@ -30,20 +31,24 @@ Postcode PostcodeNew(Ad a) {
 // if you need another postcodeCmp function, call it something else
 
 // Compares two postcodes. Returns a negative number if the  first   is
-// earlier  than  the  second  ,  0 if they're the same, and a
-// positive number if the first postcode is later than the second.
+// elower  than  the  second  ,  0 if they're the same, and a
+// positive number if the first postcode is larger than the second.
 
 // takes in an Ad and an int because that's what is specified in Tree.c
 // this can be changed, but you must change both files
-int PostcodeCmp(Ad a, int p) {
+int PostcodeCmp(Node n, Ad a) {
     assert (p != NULL && Ad != NULL);
 
-    if (a->postcode < p) {
+    // need to get the Postcode from the Node, the
+    Postcode postcode = getPostcodeFromNode(n);
+    int firstP = postcode->p;
+    // need to get the p from the Ad
+    int secondP = getPFromAd(a);
+
+    if (firstP < secondP) {
         return -1;
-    } else if (a->postcode > p) {
+    } else if (firstP > secondP) {
         return 1;
-    } else {
-        return 0;
     }
 
     return 0;
@@ -103,4 +108,8 @@ void PostcodePrint(Postcode p) {
     }
 
     return;
+}
+
+int getPfromPostcode(Postcode postcode) {
+    return postcode->p;
 }

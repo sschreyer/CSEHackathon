@@ -3,12 +3,11 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 #include "Postcode.h"
 #include "ad.h"
 #include "Tree.h"
-
-typedef struct node *Node;
 
 struct node {
     Postcode postcode;
@@ -50,7 +49,7 @@ void TreeFree(Tree t) {
 // internal function for free
 static void doFree(Node n) {
     if (n != NULL) {
-        PostcodeFree(n->postocde);
+        PostcodeFree(n->postcode);
         doFree(n->left);
         doFree(n->right);
         free(n);
@@ -59,17 +58,17 @@ static void doFree(Node n) {
 
 // Insert an ad into the tree
 void TreeInsert(Tree t, Ad a) {
-    t->root = doInsert(t->root, a, p);
+    t->root = doInsert(t->root, a);
 }
 
 // should be complete, but worth double checking with 2521 slides
 static Node doInsert(Node n, Ad a) {
     if (n == NULL) {
-        return newNode(ad);
+        return newNode(a);
     }
 
     // insert recursively
-    int cmp = PostcodeCmp(n->postcode->p, a->p);
+    int cmp = PostcodeCmp(n, a);
     if (cmp < 0) {
         n->left = doInsert(n->left, a);
     } else if (cmp > 0) {
@@ -87,12 +86,12 @@ static Node doInsert(Node n, Ad a) {
     int rHeight = height(n->right);
 
     if ((lHeight - rHeight) > 1 ) {
-        if (n->left != NULL && (PostcodeCmp(a, p) > 0)) {
+        if (n->left != NULL && (PostcodeCmp(n->left, a) > 0)) {
             n->left = rotateLeft(n->left);
         }
         n = rotateRight(n);
     } else if ((rHeight - lHeight) > 1) {
-        if (n->right != NULL && (PostcodeCmp(a, p) < 0)) {
+        if (n->right != NULL && (PostcodeCmp(n->right, a) < 0)) {
             n->right = rotateRight(n->right);
         }
         n = rotateLeft(n);
@@ -159,16 +158,23 @@ int TreeFind (Tree t, int p) {
     return doTreeFind(t->root, postcode);
 }
 
-static int doTreeFind(Node n, int postcode) {
+static int doTreeFind(Node n, int find) {
     if (n == NULL) {
         return 0;
     }
 
-    if (p < n->postcode->p) {
-        doTreeFind(n->left, p);
-    } else if (p > n->postcode->p) {
-        doTreeFind(n->right, postcode);
+    int currPostcode = getPostcodeFromNode(n);
+
+    if (find < currPostcode) {
+        doTreeFind(n->left, find);
+    } else if (find > currPostcode) {
+        doTreeFind(n->right, find);
     } else {
         return 1;
     }
+}
+
+// returns the Postcode from a node
+Postcode getPostcodeFromNode(Node n) {
+    return n->postcode;
 }

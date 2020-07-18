@@ -48,3 +48,7 @@ void printAd(Ad a) {
 
     return;
 }
+
+int getPFromAd(Ad a) {
+    return a->p;
+}

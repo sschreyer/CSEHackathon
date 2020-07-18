@@ -5,8 +5,9 @@
 
 typedef struct ad *Ad;
 
+
 // Creates a new ad
-Ad AdNew(char *ad, char *businessName int postcode);
+Ad AdNew(char *ad, char *businessName, int postcode);
 
 // Frees an Ad
 Ad AdFree(Ad a);

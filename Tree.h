@@ -1,29 +1,24 @@
 // Inerface to the AVL tree ADT
-
 #ifndef TREE_H
 #define TREE_H
 
+#include "Postcode.h"
+
 
 typedef struct tree *Tree;
+typedef struct node *Node;
 
 // Creates a new empty tree
-Tree TreeNew(void) {
-   Tree t = malloc(sizeof(*t));
-   assert(t != NULL);
-   t->root = NULL;
-   return t;
-}
+Tree TreeNew(void);
 
 // Frees the tree
-void TreeFree(Tree t) {
-   doFree(t->root);
-   free(t);
-}
+void TreeFree(Tree t);
 
 // Insert an Ad into the tree
-void TreeInsert(Tree t, Ad a, int postcode) {
-    t->root = doInsert(t->root, ad);
-}
+void TreeInsert(Tree t, Ad a);
+
+// special function that returns the Postcode in the node
+Postcode getPostcodeFromNode(Tree t);
 
 
 

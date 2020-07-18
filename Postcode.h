@@ -1,7 +1,9 @@
 // Interface for the Postcode ADT
-
 #ifndef POSTCODE_H
 #define POSTCODE_H
+
+#include "ad.h"
+#include "Tree.h"
 
 typedef struct postcode *Postcode;
 
@@ -9,7 +11,7 @@ typedef struct postcode *Postcode;
 Postcode PostcodeNew();
 
 // compare two postcodes given in a specific form
-int PostcodeCmp(Ad a, int p);
+int PostcodeCmp(Node n, Ad a);
 
 // add an Ad to our postocde
 void addAdToPostcode(Postcode p, Ad a);
@@ -21,5 +23,7 @@ void PostcodeFree(Postcode p);
 void PostcodePrint(Postcode p);
 
 void addAdToPostcode(Postcode p, Ad a);
+
+int getPfromPostcode(Postcode postcode);
 
 #endif
