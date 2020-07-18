@@ -58,25 +58,24 @@ static void doFree(Node n) {
 }
 
 // Insert an ad into the tree
-void TreeInsert(Tree t, Ad a, int postcode) {
-    t->root = doInsert(t->root, ad);
+void TreeInsert(Tree t, Ad a) {
+    t->root = doInsert(t->root, a, p);
 }
 
 // should be complete, but worth double checking with 2521 slides
-static Node doInsert(Node n, Ad a, int p) {
+static Node doInsert(Node n, Ad a) {
     if (n == NULL) {
         return newNode(ad);
     }
 
     // insert recursively
-    int cmp = postcodeCmp(a, p);
+    int cmp = PostcodeCmp(n->postcode->p, a->p);
     if (cmp < 0) {
-        n->left = doInsert(n->left, a, p);
+        n->left = doInsert(n->left, a);
     } else if (cmp > 0) {
-        n->right = doInsert(n->right, a, p);
+        n->right = doInsert(n->right, a);
     } else {
-        addAdToPostcode();
-        return n;
+        addAdToPostcode(n->postcode, a);
     }
 
     // insertion done

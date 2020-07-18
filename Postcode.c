@@ -35,7 +35,8 @@ Postcode PostcodeNew(Ad a) {
 
 // takes in an Ad and an int because that's what is specified in Tree.c
 // this can be changed, but you must change both files
-int postcodeCmp(Ad a, int p) {
+int PostcodeCmp(Ad a, int p) {
+    assert (p != NULL && Ad != NULL);
 
     if (a->postcode < p) {
         return -1;
@@ -50,8 +51,8 @@ int postcodeCmp(Ad a, int p) {
 
 // add an Ad to Postcode — INCOMPLETE
 void addAdToPostcode(Postcode p, Ad a) {
+    assert (p != NULL);
 
-    
 
 
     return;
@@ -59,6 +60,7 @@ void addAdToPostcode(Postcode p, Ad a) {
 
 // free all memory associated with a Postcode - INCOMPLETE
 void PostcodeFree(Postcode p) {
+    assert (p != NULL);
 
     // while loop to free all of the Ads array - to be done
 
@@ -66,5 +68,11 @@ void PostcodeFree(Postcode p) {
 
     free(p);
 
+    return;
+}
+
+// prints all ads in a postcode - INCOMPLETE
+void PostcodePrint(Postcode p) {
+    assert (p != NULL);
     return;
 }

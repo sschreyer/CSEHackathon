@@ -23,8 +23,8 @@ Ad AdNew(char *ad, char *businessName, int p) {
 }
 
 // Frees an Ad — INCOMPLETE
-void FreeAd(Ad ad) {
-
+void FreeAd(Ad a) {
+    assert(a != NULL);
     // if we change AdNew so it uses strdup, we have to free the strings
     // here
 
@@ -35,6 +35,7 @@ void FreeAd(Ad ad) {
 
 // prints an ad — INCOMPLETE
 void printAd(Ad a) {
+    assert(a != NULL);
 
     printf("Postcode: %d\n", a->p);
 

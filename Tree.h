@@ -1,5 +1,9 @@
 // Inerface to the AVL tree ADT
 
+#ifndef TREE_H
+#define TREE_H
+
+
 typedef struct tree *Tree;
 
 // Creates a new empty tree
@@ -27,3 +31,4 @@ void TreeInsert(Tree t, Ad a, int postcode) {
 
 // check whether a postcode value is in a Tree — not written yet
 //int TreeFind (BSTree t, int postcode)
+#endif

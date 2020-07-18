@@ -9,10 +9,10 @@ typedef struct ad *Ad;
 Ad AdNew(char *ad, char *businessName int postcode);
 
 // Frees an Ad
-Ad AdFree(Ad ad);
+Ad AdFree(Ad a);
 
 // prints an ad
-void printAd(Ad);
+void printAd(Ad a);
 
 
 #endif
