@@ -139,8 +139,8 @@ static Node rotateRight(Node n) {
     }
 }
 
-// Returns  the height of a subtree while assuming that the height field
-// of the root node of the subtree is correct
+// Returns  the height of a subtree.
+// Assumes that the correct heigh is correct.
 static int height(Node n) {
     if (n == NULL) {
         return -1;
@@ -156,7 +156,7 @@ static int max(int a, int b) {
 // Ad-ADT specific Tree functions:
 
 // check whether a postcode value is in a Tree — INCOMPLETE FUNCTION
-int TreeFind (BSTree t, int postcode)
+/*int TreeFind (BSTree t, int postcode)
 {
-	//
-}
+
+}*/

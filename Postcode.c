@@ -3,7 +3,7 @@
 #include <string.h>
 
 #include "Postcode.h"
-#include <ad.c>
+#include "ad.c"
 
 struct postcode {
     Ad *ads;
