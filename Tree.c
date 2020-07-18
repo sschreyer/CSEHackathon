@@ -30,6 +30,7 @@ static Node rotateRight(Node n);
 static int  height(Node n);
 static int  max(int a, int b);
 static Node newNode(Postcode p);
+static int doTreeFind(Node n, int postcode);
 ///////////////////////
 
 // Creates a new empty tree
@@ -153,10 +154,22 @@ static int max(int a, int b) {
     return a > b ? a : b;
 }
 
-// Ad-ADT specific Tree functions:
-
 // check whether a postcode value is in a Tree — INCOMPLETE FUNCTION
-/*int TreeFind (BSTree t, int postcode)
-{
+// returns 1 if there is, 0 if there is not
+int TreeFind (Tree t, int postcode) {
+    return doTreeFind(t->root, postcode);
+}
 
-}*/
+static int doTreeFind(Node n, int postcode) {
+    if (n == NULL) {
+        return 0;
+    }
+
+    if (n->postcode->p < postcode) {
+
+    } else if () {
+
+    } else {
+
+    }
+}

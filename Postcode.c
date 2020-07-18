@@ -8,7 +8,7 @@
 struct postcode {
     Ad *ads;
     int p;
-    int numAds;
+    int numAds; 
 };
 
 
@@ -51,11 +51,19 @@ int postcodeCmp(Ad a, int p) {
 // add an Ad to Postcode — INCOMPLETE
 void addAdToPostcode(Postcode p, Ad a) {
 
+
+
     return;
 }
 
 // free all memory associated with a Postcode - INCOMPLETE
 void PostcodeFree(Postcode p) {
+
+    // while loop to free all of the Ads array - to be done
+
+
+
+    free(p);
 
     return;
 }

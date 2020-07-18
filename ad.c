@@ -7,14 +7,14 @@
 struct ad {
     char *ad;
     char *businessName;
-    int postcode;
+    int p;
 };
 
 // Creates a new ad — INCOMPLETE
 Ad AdNew(char *ad, char *businessName, int p) {
 
     Ad new = malloc(sizeof(struct ad));
-    new->postcode = p;
+    new->p = p;
     // Any SEGFAULTS that arise here are because of not using strdup()?
     new->ad = strcpy(ad);
     new->businessName = strcpy(businessName);
