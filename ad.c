@@ -25,12 +25,21 @@ Ad AdNew(char *ad, char *businessName, int p) {
 // Frees an Ad — INCOMPLETE
 void FreeAd(Ad ad) {
 
+    free(ad);
+
     return;
 }
 
 // prints an ad — INCOMPLETE
-void printAd(Ad) {
+void printAd(Ad a) {
 
+    printf("Postcode: %d\n", a->p);
+
+    fputs(a->businessName, stdout);
+    printf("\n");
+
+    fputs(a->ad, stdout);
+    printf("\n");
 
     return;
 }
