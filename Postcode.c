@@ -12,9 +12,16 @@ struct postcode {
 
 
 // new postcode
-Postcode PostcodeNew() {
+Postcode PostcodeNew(Ad a) {
 
-    return NULL;
+    assert(a != NULL);
+
+    Postcode new = malloc(sizeof(struct postcode));
+    assert(new != NULL);
+    new->ads = a;
+    new->p = a->postcode;
+
+    return Postcode;
 }
 
 // compare two postcodes - INCOMPLETE — used for inserting into the tree
@@ -22,11 +29,19 @@ Postcode PostcodeNew() {
 
 // Compares two postcodes. Returns a negative number if the  first   is
 // earlier  than  the  second  ,  0 if they're the same, and a
-// positive number if the first time is later than the second.
+// positive number if the first postcode is later than the second.
 
 // takes in an Ad and an int because that's what is specified in Tree.c
 // this can be changed, but you must change both files
 int postcodeCmp(Ad a, int p) {
+
+    if (a->postcode < p) {
+        return -1;
+    } else if (a->postcode > p) {
+        return 1;
+    } else {
+        return 0;
+    }
 
     return 0;
 }
