@@ -156,7 +156,7 @@ static int max(int a, int b) {
 
 // check whether a postcode value is in a Tree — INCOMPLETE FUNCTION
 // returns 1 if there is, 0 if there is not
-int TreeFind (Tree t, int postcode) {
+int TreeFind (Tree t, int p) {
     return doTreeFind(t->root, postcode);
 }
 
@@ -165,11 +165,11 @@ static int doTreeFind(Node n, int postcode) {
         return 0;
     }
 
-    if (n->postcode->p < postcode) {
-
-    } else if () {
-
+    if (p < n->postcode->p) {
+        doTreeFind(n->left, p);
+    } else if (p > n->postcode->p) {
+        doTreeFind(n->right, postcode);
     } else {
-
+        return 1;
     }
 }
