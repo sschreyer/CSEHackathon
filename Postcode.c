@@ -6,7 +6,7 @@
 #include "ad.c"
 
 struct postcode {
-    Ad *ads;
+    Ad firstAd;
     int p;
     int numAds;
 };
@@ -19,7 +19,7 @@ Postcode PostcodeNew(Ad a) {
 
     Postcode new = malloc(sizeof(struct postcode));
     assert(new != NULL);
-    new->ads = a;
+    new->firstAd = a;
     new->p = a->postcode;
     new->numAds = 1;
 
@@ -49,22 +49,41 @@ int PostcodeCmp(Ad a, int p) {
     return 0;
 }
 
-// add an Ad to Postcode — INCOMPLETE
+// add an Ad to Postcode
 void addAdToPostcode(Postcode p, Ad a) {
     assert (p != NULL);
 
+    if (p->firstAd == NULL) {
+        p->firstAd = a;
+    }
 
+    // We need to loop through the list of ads to find the last
+    Ad curr = p->firstAd;
+    Ad prev = NULL;
+
+    while (curr != NULL) {
+        prev = curr;
+        curr = curr->next;
+    }
+
+    // add a to the end of the list
+    prev->next = a;
 
     return;
 }
 
-// free all memory associated with a Postcode - INCOMPLETE
+// free all memory associated with a Postcode
 void PostcodeFree(Postcode p) {
     assert (p != NULL);
 
-    // while loop to free all of the Ads array - to be done
 
-
+    Ad curr = p->firstAd;
+    Ad prev = NULL;
+    while (curr != NULL) {
+        prev = curr;
+        curr = curr->next;
+        free(prev);
+    }
 
     free(p);
 
@@ -74,5 +93,14 @@ void PostcodeFree(Postcode p) {
 // prints all ads in a postcode - INCOMPLETE
 void PostcodePrint(Postcode p) {
     assert (p != NULL);
+
+    Ad curr = p->firstAd;
+    while (curr != NULL) {
+
+        printAd(curr);
+
+        curr = curr->next;
+    }
+
     return;
 }

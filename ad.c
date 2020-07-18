@@ -8,6 +8,7 @@ struct ad {
     char *ad;
     char *businessName;
     int p;
+    Ad next;
 };
 
 // Creates a new ad — INCOMPLETE
