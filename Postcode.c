@@ -8,6 +8,7 @@
 struct postcode {
     Ad *ads;
     int p;
+    int numAds;
 };
 
 
@@ -20,6 +21,7 @@ Postcode PostcodeNew(Ad a) {
     assert(new != NULL);
     new->ads = a;
     new->p = a->postcode;
+    new->numAds = 1;
 
     return Postcode;
 }
