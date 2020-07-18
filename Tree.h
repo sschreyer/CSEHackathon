@@ -4,7 +4,6 @@
 
 #include "Postcode.h"
 
-
 typedef struct tree *Tree;
 typedef struct node *Node;
 
@@ -18,12 +17,9 @@ void TreeFree(Tree t);
 void TreeInsert(Tree t, Ad a);
 
 // special function that returns the Postcode in the node
-Postcode getPostcodeFromNode(Tree t);
-
-
-
-
+Postcode getPostcodeFromNode(Node n);
 
 // check whether a postcode value is in a Tree — not written yet
-//int TreeFind (BSTree t, int postcode)
+int TreeFind (Tree t, int postcode);
+
 #endif

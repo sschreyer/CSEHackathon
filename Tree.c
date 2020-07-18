@@ -64,7 +64,9 @@ void TreeInsert(Tree t, Ad a) {
 // should be complete, but worth double checking with 2521 slides
 static Node doInsert(Node n, Ad a) {
     if (n == NULL) {
-        return newNode(a);
+        Postcode postcode = PostcodeNew();
+        addAdToPostcode(postcode, a);
+        return newNode(postcode);
     }
 
     // insert recursively
@@ -155,7 +157,7 @@ static int max(int a, int b) {
 // check whether a postcode value is in a Tree — INCOMPLETE FUNCTION
 // returns 1 if there is, 0 if there is not
 int TreeFind (Tree t, int p) {
-    return doTreeFind(t->root, postcode);
+    return doTreeFind(t->root, p);
 }
 
 static int doTreeFind(Node n, int find) {
@@ -163,11 +165,12 @@ static int doTreeFind(Node n, int find) {
         return 0;
     }
 
-    int currPostcode = getPostcodeFromNode(n);
+    Postcode currPostcode = getPostcodeFromNode(n);
+    int currP = getPfromPostcode(currPostcode);
 
-    if (find < currPostcode) {
+    if (find < currP) {
         doTreeFind(n->left, find);
-    } else if (find > currPostcode) {
+    } else if (find > currP) {
         doTreeFind(n->right, find);
     } else {
         return 1;
