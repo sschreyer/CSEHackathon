@@ -25,6 +25,9 @@ Ad AdNew(char *ad, char *businessName, int p) {
 // Frees an Ad — INCOMPLETE
 void FreeAd(Ad ad) {
 
+    // if we change AdNew so it uses strdup, we have to free the strings
+    // here
+
     free(ad);
 
     return;

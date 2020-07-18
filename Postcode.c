@@ -8,7 +8,7 @@
 struct postcode {
     Ad *ads;
     int p;
-    int numAds; 
+    int numAds;
 };
 
 
@@ -51,6 +51,7 @@ int postcodeCmp(Ad a, int p) {
 // add an Ad to Postcode — INCOMPLETE
 void addAdToPostcode(Postcode p, Ad a) {
 
+    
 
 
     return;

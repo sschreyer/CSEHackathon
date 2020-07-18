@@ -1,3 +1,7 @@
+// Inerface to the AVL tree ADT
+
+typedef struct tree *Tree;
+
 // Creates a new empty tree
 Tree TreeNew(void) {
    Tree t = malloc(sizeof(*t));
@@ -12,12 +16,14 @@ void TreeFree(Tree t) {
    free(t);
 }
 
-// Inserts  a
-void TreeInsert(Tree t, Time time) {
-    t->root = doInsert(t->root, time);
+// Insert an Ad into the tree
+void TreeInsert(Tree t, Ad a, int postcode) {
+    t->root = doInsert(t->root, ad);
 }
 
 
 
 
 
+// check whether a postcode value is in a Tree — not written yet
+//int TreeFind (BSTree t, int postcode)
