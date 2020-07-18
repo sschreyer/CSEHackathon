@@ -172,9 +172,9 @@ static int doTreeFind(Node n, int find) {
         doTreeFind(n->left, find);
     } else if (find > currP) {
         doTreeFind(n->right, find);
-    } else {
+    } //else {
         return 1;
-    }
+    //}
 }
 
 // returns the Postcode from a node

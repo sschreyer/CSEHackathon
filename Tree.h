@@ -6,6 +6,7 @@
 
 typedef struct tree *Tree;
 typedef struct node *Node;
+typedef struct postcode *Postcode;
 
 // Creates a new empty tree
 Tree TreeNew(void);

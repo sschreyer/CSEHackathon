@@ -6,6 +6,7 @@
 #include "Tree.h"
 
 typedef struct postcode *Postcode;
+typedef struct node *Node;
 
 // new postcode
 Postcode PostcodeNew();

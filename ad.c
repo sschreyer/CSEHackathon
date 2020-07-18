@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 #include "ad.h"
 
@@ -17,8 +18,8 @@ Ad AdNew(char *ad, char *businessName, int p) {
     Ad new = malloc(sizeof(struct ad));
     new->p = p;
     // Any SEGFAULTS that arise here are because of not using strdup()?
-    new->ad = strcpy(ad);
-    new->businessName = strcpy(businessName);
+    new->ad = strdup(ad);
+    new->businessName = strdup(businessName);
 
     return new;
 }
@@ -26,10 +27,11 @@ Ad AdNew(char *ad, char *businessName, int p) {
 // Frees an Ad — INCOMPLETE
 void FreeAd(Ad a) {
     assert(a != NULL);
-    // if we change AdNew so it uses strdup, we have to free the strings
-    // here
 
-    free(ad);
+    free(a->ad);
+    free(a->businessName);
+
+    free(a);
 
     return;
 }
@@ -51,4 +53,12 @@ void printAd(Ad a) {
 
 int getPFromAd(Ad a) {
     return a->p;
+}
+
+Ad getNextAd(Ad a) {
+    return a->next;
+}
+
+void changeNextPointer(Ad a, Ad newNext) {
+    a->next = newNext;
 }

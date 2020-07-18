@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 #include "Postcode.h"
 #include "ad.h"
@@ -21,10 +22,10 @@ Postcode PostcodeNew(Ad a) {
     Postcode new = malloc(sizeof(struct postcode));
     assert(new != NULL);
     new->firstAd = a;
-    new->p = a->postcode;
+    new->p = getPFromAd(a);
     new->numAds = 1;
 
-    return Postcode;
+    return new;
 }
 
 // compare two postcodes - INCOMPLETE — used for inserting into the tree
@@ -37,7 +38,7 @@ Postcode PostcodeNew(Ad a) {
 // takes in an Ad and an int because that's what is specified in Tree.c
 // this can be changed, but you must change both files
 int PostcodeCmp(Node n, Ad a) {
-    assert (p != NULL && Ad != NULL);
+    assert (n != NULL && a != NULL);
 
     // need to get the Postcode from the Node, the
     Postcode postcode = getPostcodeFromNode(n);
@@ -68,11 +69,11 @@ void addAdToPostcode(Postcode p, Ad a) {
 
     while (curr != NULL) {
         prev = curr;
-        curr = curr->next;
+        curr = getNextAd(curr);
     }
 
-    // add a to the end of the list
-    prev->next = a;
+    // add a to the end of the list;
+    changeNextPointer(prev, a);
 
     return;
 }
@@ -86,7 +87,7 @@ void PostcodeFree(Postcode p) {
     Ad prev = NULL;
     while (curr != NULL) {
         prev = curr;
-        curr = curr->next;
+        curr = getNextAd(curr);
         free(prev);
     }
 
@@ -104,7 +105,7 @@ void PostcodePrint(Postcode p) {
 
         printAd(curr);
 
-        curr = curr->next;
+        curr = getNextAd(curr);
     }
 
     return;
