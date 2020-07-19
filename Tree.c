@@ -30,7 +30,8 @@ static int  height(Node n);
 static int  max(int a, int b);
 static Node newNode(Postcode p);
 static int doTreeFind(Node n, int postcode);
-static void doPrintPostcodesInRange(Node n, int p, int range);
+void doPrintPostcodesInRange(Node n, int p, int range);
+void doPrintTree(Node n);
 ///////////////////////
 
 // Creates a new empty tree
@@ -190,7 +191,7 @@ void printPostcodesInRange(Tree t, int p, int range) {
    return;
 }  
 
-static void doPrintPostcodesInRange(Node n, int p, int range) {
+void doPrintPostcodesInRange(Node n, int p, int range) {
 
    if (n == NULL) {
       return;
@@ -198,14 +199,40 @@ static void doPrintPostcodesInRange(Node n, int p, int range) {
    
    int nodeP = getPfromPostcode(n->postcode);
    if (nodeP <= p + 10 && nodeP >= p - 10) {
-      printf("Postcode: %d\n", nodeP);
+      printf("Postcode: %d\n\n", nodeP);
+      
+      Ad curr = getAdFromPostcode(n->postcode); 
+      while (curr != NULL) {
+         printAd(curr);
+         curr = getNextAd(curr);
+      }
    }
    
+   
+   
+   
+   doPrintPostcodesInRange(n->left, p, range);
+   doPrintPostcodesInRange(n->right, p, range);
+}
+
+// print a dictionary wrapper function -  TEST FUNCTION
+void printTree(Tree t) {
+   doPrintTree(t->root);
+   return;
+}
+
+// print a dictonary - internals of showDict() - TEST FUNCTION
+void doPrintTree(Node n) {
+   if (n == NULL) return;
+
    Ad curr = getAdFromPostcode(n->postcode); 
    while (curr != NULL) {
       printAd(curr);
       curr = getNextAd(curr);
    }
    
+   doPrintTree(n->left);
+   doPrintTree(n->right);
    
+   return;
 }

@@ -86,12 +86,14 @@ int main(void) {
         int p = atoi(postcode);
         Ad a = AdNew(ad, businessName, p);
         TreeInsert(tree, a, p);
+        
         //Postcode PPostcode = PostcodeNew(p);
         
         //addAdToPostcode(PPostcode, a);
     }
-
-
+    
+   //printTree(tree);
+   
    printPostcodesInRange(tree, usr_post, RANGE);
    
 	fclose(in);

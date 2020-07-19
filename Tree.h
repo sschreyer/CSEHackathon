@@ -26,4 +26,7 @@ int TreeFind (Tree t, int postcode);
 // prints postcodes in range [p - range, p + range]
 void printPostcodesInRange(Tree t, int p, int range);
 
+// print a dictionary wrapper function -  TEST FUNCTION
+void printTree(Tree t);
+
 #endif

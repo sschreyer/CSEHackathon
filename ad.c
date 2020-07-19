@@ -41,13 +41,14 @@ void FreeAd(Ad a) {
 void printAd(Ad a) {
     assert(a != NULL);
 
-    printf("Postcode: %d\n", a->p);
+    //printf("Postcode: %d\n\n", a->p);
 
     fputs(a->businessName, stdout);
     printf("\n");
 
+    printf("Ad:");
     fputs(a->ad, stdout);
-    printf("\n");
+    printf("\n\n");
 
     return;
 }
@@ -61,5 +62,9 @@ Ad getNextAd(Ad a) {
 }
 
 void changeNextPointer(Ad a, Ad newNext) {
+
+   if (a->p == newNext->p) {
     a->next = newNext;
+   }
+   return;
 }
