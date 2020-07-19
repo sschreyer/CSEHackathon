@@ -4,7 +4,7 @@ OBJS=main.o Tree.o Postcode.o ad.o
 
 
 covid : $(OBJS)
-	$(CC) -o covid $(OBJS)
+	$(CC) -o cov-tect $(OBJS)
 
 main.o: main.c Tree.h Postcode.h ad.h
 
