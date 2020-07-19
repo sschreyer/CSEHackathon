@@ -86,17 +86,14 @@ int main(void) {
         int p = atoi(postcode);
         Ad a = AdNew(ad, businessName, p);
         TreeInsert(tree, a, p);
-        
-        //Postcode PPostcode = PostcodeNew(p);
-        
-        //addAdToPostcode(PPostcode, a);
     }
-    
-   //printTree(tree);
    
-   printPostcodesInRange(tree, usr_post, RANGE);
+    int affectedBusinesses = printPostcodesInRange(tree, usr_post, RANGE);
+    printf("There are %d affected businesses in your area\n", 
+      affectedBusinesses
+    );
    
-	fclose(in);
+	 fclose(in);
 
     return 0;
 }

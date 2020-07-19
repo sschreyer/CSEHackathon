@@ -184,11 +184,14 @@ Postcode getPostcodeFromNode(Node n) {
     return n->postcode;
 }
 
+// global variable (this file only)
+int affectedBusinesses = 0;
+
 // prints postcodes in range [p - range, p + range]. Wrapper func.
-void printPostcodesInRange(Tree t, int p, int range) {
+int printPostcodesInRange(Tree t, int p, int range) {
    
    doPrintPostcodesInRange(t->root, p, range);
-   return;
+   return affectedBusinesses;
 }  
 
 void doPrintPostcodesInRange(Node n, int p, int range) {
@@ -204,12 +207,10 @@ void doPrintPostcodesInRange(Node n, int p, int range) {
       Ad curr = getAdFromPostcode(n->postcode); 
       while (curr != NULL) {
          printAd(curr);
+         affectedBusinesses++;
          curr = getNextAd(curr);
       }
    }
-   
-   
-   
    
    doPrintPostcodesInRange(n->left, p, range);
    doPrintPostcodesInRange(n->right, p, range);

@@ -96,18 +96,20 @@ void PostcodeFree(Postcode p) {
     return;
 }
 
-// prints all ads in a postcode - INCOMPLETE
+// prints all ads in a postcode 
 void PostcodePrint(Postcode p) {
     assert (p != NULL);
 
     Ad curr = p->firstAd;
+    int affectedBusinesses = 0;
     while (curr != NULL) {
 
         printAd(curr);
-
+        
+        affectedBusinesses++;
         curr = getNextAd(curr);
     }
-
+    
     return;
 }
 

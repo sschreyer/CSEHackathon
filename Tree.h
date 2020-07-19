@@ -23,8 +23,9 @@ Postcode getPostcodeFromNode(Node n);
 // check whether a postcode value is in a Tree — not written yet
 int TreeFind (Tree t, int postcode);
 
-// prints postcodes in range [p - range, p + range]
-void printPostcodesInRange(Tree t, int p, int range);
+// prints postcodes in range [p - range, p + range] returns number of 
+// ads in the range
+int printPostcodesInRange(Tree t, int p, int range);
 
 // print a dictionary wrapper function -  TEST FUNCTION
 void printTree(Tree t);
