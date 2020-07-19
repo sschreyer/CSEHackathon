@@ -26,7 +26,7 @@ Postcode PostcodeNew(int p) {
     return new;
 }
 
-// compare two postcodes - INCOMPLETE — used for inserting into the tree
+// compare two postcodes used for inserting into the tree
 // if you need another postcodeCmp function, call it something else
 
 // Compares two postcodes. Returns a negative number if the  first   is
@@ -44,7 +44,6 @@ int PostcodeCmp(Node n, Ad a) {
     // need to get the p from the Ad
     int secondP = getPFromAd(a);
 
-    // flipped these inequalities...reflected in comment above
     if (firstP > secondP) {
         return -1;
     } else if (firstP < secondP) {
@@ -113,10 +112,12 @@ void PostcodePrint(Postcode p) {
     return;
 }
 
+// returns the int version of postcode from a Postcode
 int getPfromPostcode(Postcode postcode) {
     return postcode->p;
 }
 
+// returns an Ad from the postcode
 Ad getAdFromPostcode(Postcode postcode) {
    return postcode->firstAd;
 }

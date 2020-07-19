@@ -61,6 +61,7 @@ Ad getNextAd(Ad a) {
     return a->next;
 }
 
+// change the next value of an Ad a to newNext
 void changeNextPointer(Ad a, Ad newNext) {
 
    if (a->p == newNext->p) {

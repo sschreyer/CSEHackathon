@@ -63,7 +63,7 @@ void TreeInsert(Tree t, Ad a, int p) {
     t->root = doInsert(t->root, a, p);
 }
 
-// should be complete, but worth double checking with 2521 slides
+// internal function for TreeInsert
 static Node doInsert(Node n, Ad a, int p) {
     if (n == NULL) {
         Postcode postcode = PostcodeNew(p);

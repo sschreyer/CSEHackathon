@@ -94,6 +94,8 @@ int main(void) {
     );
    
 	 fclose(in);
+	 
+	 TreeFree(tree);
 
     return 0;
 }
