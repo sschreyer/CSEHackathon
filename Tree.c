@@ -23,13 +23,14 @@ struct tree {
 //////////////////////
 // Function Prototypes
 static void doFree(Node n);
-static Node doInsert(Node n, Ad ad);
+static Node doInsert(Node n, Ad a, int p);
 static Node rotateLeft(Node n);
 static Node rotateRight(Node n);
 static int  height(Node n);
 static int  max(int a, int b);
 static Node newNode(Postcode p);
 static int doTreeFind(Node n, int postcode);
+static void doPrintPostcodesInRange(Node n, int p, int range);
 ///////////////////////
 
 // Creates a new empty tree
@@ -57,14 +58,14 @@ static void doFree(Node n) {
 }
 
 // Insert an ad into the tree
-void TreeInsert(Tree t, Ad a) {
-    t->root = doInsert(t->root, a);
+void TreeInsert(Tree t, Ad a, int p) {
+    t->root = doInsert(t->root, a, p);
 }
 
 // should be complete, but worth double checking with 2521 slides
-static Node doInsert(Node n, Ad a) {
+static Node doInsert(Node n, Ad a, int p) {
     if (n == NULL) {
-        Postcode postcode = PostcodeNew();
+        Postcode postcode = PostcodeNew(p);
         addAdToPostcode(postcode, a);
         return newNode(postcode);
     }
@@ -72,9 +73,9 @@ static Node doInsert(Node n, Ad a) {
     // insert recursively
     int cmp = PostcodeCmp(n, a);
     if (cmp < 0) {
-        n->left = doInsert(n->left, a);
+        n->left = doInsert(n->left, a, p);
     } else if (cmp > 0) {
-        n->right = doInsert(n->right, a);
+        n->right = doInsert(n->right, a, p);
     } else {
         addAdToPostcode(n->postcode, a);
     }
@@ -180,4 +181,31 @@ static int doTreeFind(Node n, int find) {
 // returns the Postcode from a node
 Postcode getPostcodeFromNode(Node n) {
     return n->postcode;
+}
+
+// prints postcodes in range [p - range, p + range]. Wrapper func.
+void printPostcodesInRange(Tree t, int p, int range) {
+   
+   doPrintPostcodesInRange(t->root, p, range);
+   return;
+}  
+
+static void doPrintPostcodesInRange(Node n, int p, int range) {
+
+   if (n == NULL) {
+      return;
+   }
+   
+   int nodeP = getPfromPostcode(n->postcode);
+   if (nodeP <= p + 10 && nodeP >= p - 10) {
+      printf("Postcode: %d\n", nodeP);
+   }
+   
+   Ad curr = getAdFromPostcode(n->postcode); 
+   while (curr != NULL) {
+      printAd(curr);
+      curr = getNextAd(curr);
+   }
+   
+   
 }

@@ -17,14 +17,15 @@ Ad AdNew(char *ad, char *businessName, int p) {
 
     Ad new = malloc(sizeof(struct ad));
     new->p = p;
-    // Any SEGFAULTS that arise here are because of not using strdup()?
+    
+    new->next = NULL;
     new->ad = strdup(ad);
     new->businessName = strdup(businessName);
 
     return new;
 }
 
-// Frees an Ad — INCOMPLETE
+// Frees an Ad 
 void FreeAd(Ad a) {
     assert(a != NULL);
 
@@ -36,7 +37,7 @@ void FreeAd(Ad a) {
     return;
 }
 
-// prints an ad — INCOMPLETE
+// prints an ad
 void printAd(Ad a) {
     assert(a != NULL);
 

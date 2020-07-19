@@ -8,10 +8,11 @@
 
 #define MAX_LINE_SIZE 1000
 #define MAX_WORD_SIZE 100
+#define RANGE 10
 
 int main(void) {
 
-    int usr_post;
+   int usr_post;
 	printf("Please Enter Your Postcode: ");
 	scanf("%d", &usr_post);
 
@@ -24,8 +25,10 @@ int main(void) {
     char *postcode;
     char *businessName;
     char *ad;
+    
+    Tree tree = TreeNew();
 
-    while(fgets(line, MAX_LINE_SIZE, in) != NULL){
+    while(fgets(line, MAX_LINE_SIZE, in) != NULL) {
         // Get postcode — will need to convert to int, though
         while(line[i] != ' ') {
             word[i] = line[i];
@@ -41,9 +44,10 @@ int main(void) {
         // if we only incremented once, we would be at the second space!
         i += 2;
         int found_space = 0;
+        int break_loop = 0;
         int j = 0;
         // We know what our input looks like, so make some assumptions
-        while (1) {
+        while (break_loop == 0) {
             if (line[i] == ' ') {
                 if (found_space == 0) {
                     word[j] = line[i];
@@ -54,7 +58,8 @@ int main(void) {
                     // so but the null terminator at word[j -1]
                     word[j - 1] = '\0';
                     businessName = strdup(word);
-                    break;
+                    found_space = 1;
+                    break_loop = 1;
                 }
             } else {
                 word[j] = line[i];
@@ -76,14 +81,19 @@ int main(void) {
         // line[i] is currently a newline
         word[j] = '\0';
         ad = strdup(word);
+        i = 0;
+        j = 0;
+        int p = atoi(postcode);
+        Ad a = AdNew(ad, businessName, p);
+        TreeInsert(tree, a, p);
+        //Postcode PPostcode = PostcodeNew(p);
+        
+        //addAdToPostcode(PPostcode, a);
     }
 
 
-    int p = atoi(postcode);
-	AdNew(ad, businessName, p);
-
-
-
+   printPostcodesInRange(tree, usr_post, RANGE);
+   
 	fclose(in);
 
     return 0;

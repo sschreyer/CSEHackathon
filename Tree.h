@@ -15,12 +15,15 @@ Tree TreeNew(void);
 void TreeFree(Tree t);
 
 // Insert an Ad into the tree
-void TreeInsert(Tree t, Ad a);
+void TreeInsert(Tree t, Ad a, int p);
 
 // special function that returns the Postcode in the node
 Postcode getPostcodeFromNode(Node n);
 
 // check whether a postcode value is in a Tree — not written yet
 int TreeFind (Tree t, int postcode);
+
+// prints postcodes in range [p - range, p + range]
+void printPostcodesInRange(Tree t, int p, int range);
 
 #endif

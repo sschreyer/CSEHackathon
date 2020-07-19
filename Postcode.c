@@ -15,15 +15,13 @@ struct postcode {
 
 
 // new postcode
-Postcode PostcodeNew(Ad a) {
-
-    assert(a != NULL);
+Postcode PostcodeNew(int p) {
 
     Postcode new = malloc(sizeof(struct postcode));
     assert(new != NULL);
-    new->firstAd = a;
-    new->p = getPFromAd(a);
-    new->numAds = 1;
+    new->firstAd = NULL;
+    new->p = p;
+    new->numAds = 0;
 
     return new;
 }
@@ -32,8 +30,8 @@ Postcode PostcodeNew(Ad a) {
 // if you need another postcodeCmp function, call it something else
 
 // Compares two postcodes. Returns a negative number if the  first   is
-// elower  than  the  second  ,  0 if they're the same, and a
-// positive number if the first postcode is larger than the second.
+// bigger  than  the  second  ,  0 if they're the same, and a
+// positive number if the first postcode is smaller than the second.
 
 // takes in an Ad and an int because that's what is specified in Tree.c
 // this can be changed, but you must change both files
@@ -46,9 +44,10 @@ int PostcodeCmp(Node n, Ad a) {
     // need to get the p from the Ad
     int secondP = getPFromAd(a);
 
-    if (firstP < secondP) {
+    // flipped these inequalities...reflected in comment above
+    if (firstP > secondP) {
         return -1;
-    } else if (firstP > secondP) {
+    } else if (firstP < secondP) {
         return 1;
     }
 
@@ -56,15 +55,16 @@ int PostcodeCmp(Node n, Ad a) {
 }
 
 // add an Ad to Postcode
-void addAdToPostcode(Postcode p, Ad a) {
-    assert (p != NULL);
+void addAdToPostcode(Postcode postcode, Ad a) {
+    assert (postcode != NULL && a != NULL);
 
-    if (p->firstAd == NULL) {
-        p->firstAd = a;
+    if (postcode->firstAd == NULL) {
+        postcode->firstAd = a;
+        return;
     }
 
     // We need to loop through the list of ads to find the last
-    Ad curr = p->firstAd;
+    Ad curr = postcode->firstAd;
     Ad prev = NULL;
 
     while (curr != NULL) {
@@ -113,4 +113,8 @@ void PostcodePrint(Postcode p) {
 
 int getPfromPostcode(Postcode postcode) {
     return postcode->p;
+}
+
+Ad getAdFromPostcode(Postcode postcode) {
+   return postcode->firstAd;
 }

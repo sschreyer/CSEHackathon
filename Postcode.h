@@ -9,7 +9,7 @@ typedef struct postcode *Postcode;
 typedef struct node *Node;
 
 // new postcode
-Postcode PostcodeNew();
+Postcode PostcodeNew(int p);
 
 // compare two postcodes given in a specific form
 int PostcodeCmp(Node n, Ad a);
@@ -26,5 +26,7 @@ void PostcodePrint(Postcode p);
 void addAdToPostcode(Postcode p, Ad a);
 
 int getPfromPostcode(Postcode postcode);
+
+Ad getAdFromPostcode(Postcode postcode);
 
 #endif
